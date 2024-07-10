@@ -1,7 +1,7 @@
 import '../../domain/entities/product_entity.dart';
 
 class ProductModel extends ProductEntity {
-  ProductModel({
+  const ProductModel({
     required super.id,
     required super.title,
     required super.description,
@@ -36,7 +36,7 @@ class ProductModel extends ProductEntity {
       discountPercentage: json['discountPercentage'],
       rating: json['rating'],
       stock: json['stock'],
-      tags: List.castFrom<dynamic, String>(json['tags']),
+      tags: (json['tags'] as List),
       brand: json['brand'],
       sku: json['sku'],
       weight: json['weight'],
@@ -44,12 +44,13 @@ class ProductModel extends ProductEntity {
       warrantyInformation: json['warrantyInformation'],
       shippingInformation: json['shippingInformation'],
       availabilityStatus: json['availabilityStatus'],
-      reviews:
-          List.from(json['reviews']).map((e) => Reviews.fromJson(e)).toList(),
+      reviews: (json['reviews'] as List)
+          .map((e) => Reviews.fromJson(e as Map<String, dynamic>))
+          .toList(),
       returnPolicy: json['returnPolicy'],
       minimumOrderQuantity: json['minimumOrderQuantity'],
       meta: Meta.fromJson(json['meta']),
-      images: List.castFrom<dynamic, String>(json['images']),
+      images: (json['images'] as List),
       thumbnail: json['thumbnail'],
     );
   }
