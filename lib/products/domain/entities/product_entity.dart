@@ -47,30 +47,32 @@ class ProductEntity {
     required this.thumbnail,
   });
 
-  ProductEntity.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    description = json['description'];
-    category = json['category'];
-    price = json['price'];
-    discountPercentage = json['discountPercentage'];
-    rating = json['rating'];
-    stock = json['stock'];
-    tags = List.castFrom<dynamic, String>(json['tags']);
-    brand = json['brand'];
-    sku = json['sku'];
-    weight = json['weight'];
-    dimensions = Dimensions.fromJson(json['dimensions']);
-    warrantyInformation = json['warrantyInformation'];
-    shippingInformation = json['shippingInformation'];
-    availabilityStatus = json['availabilityStatus'];
-    reviews =
-        List.from(json['reviews']).map((e) => Reviews.fromJson(e)).toList();
-    returnPolicy = json['returnPolicy'];
-    minimumOrderQuantity = json['minimumOrderQuantity'];
-    meta = Meta.fromJson(json['meta']);
-    images = List.castFrom<dynamic, String>(json['images']);
-    thumbnail = json['thumbnail'];
+  factory ProductEntity.fromJson(Map<String, dynamic> json) {
+    return ProductEntity(
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+      category: json['category'],
+      price: json['price'],
+      discountPercentage: json['discountPercentage'],
+      rating: json['rating'],
+      stock: json['stock'],
+      tags: List.castFrom<dynamic, String>(json['tags']),
+      brand: json['brand'],
+      sku: json['sku'],
+      weight: json['weight'],
+      dimensions: Dimensions.fromJson(json['dimensions']),
+      warrantyInformation: json['warrantyInformation'],
+      shippingInformation: json['shippingInformation'],
+      availabilityStatus: json['availabilityStatus'],
+      reviews:
+          List.from(json['reviews']).map((e) => Reviews.fromJson(e)).toList(),
+      returnPolicy: json['returnPolicy'],
+      minimumOrderQuantity: json['minimumOrderQuantity'],
+      meta: Meta.fromJson(json['meta']),
+      images: List.castFrom<dynamic, String>(json['images']),
+      thumbnail: json['thumbnail'],
+    );
   }
 }
 
@@ -85,10 +87,12 @@ class Dimensions {
     required this.depth,
   });
 
-  Dimensions.fromJson(Map<String, dynamic> json) {
-    width = json['width'];
-    height = json['height'];
-    depth = json['depth'];
+  factory Dimensions.fromJson(Map<String, dynamic> json) {
+    return Dimensions(
+      width: json['width'],
+      height: json['height'],
+      depth: json['depth'],
+    );
   }
 }
 
@@ -107,12 +111,14 @@ class Reviews {
     required this.reviewerEmail,
   });
 
-  Reviews.fromJson(Map<String, dynamic> json) {
-    rating = json['rating'];
-    comment = json['comment'];
-    date = json['date'];
-    reviewerName = json['reviewerName'];
-    reviewerEmail = json['reviewerEmail'];
+  factory Reviews.fromJson(Map<String, dynamic> json) {
+    return Reviews(
+      rating: json['rating'],
+      comment: json['comment'],
+      date: json['date'],
+      reviewerName: json['reviewerName'],
+      reviewerEmail: json['reviewerEmail'],
+    );
   }
 }
 
@@ -125,8 +131,10 @@ class Meta {
     required this.qrCode,
   });
 
-  Meta.fromJson(Map<String, dynamic> json) {
-    barcode = json['barcode'];
-    qrCode = json['qrCode'];
+  factory Meta.fromJson(Map<String, dynamic> json) {
+    return Meta(
+      barcode: json['barcode'],
+      qrCode: json['qrCode'],
+    );
   }
 }
