@@ -1,7 +1,7 @@
 import '../../domain/entities/product_entity.dart';
 
 class ProductModel extends ProductEntity {
-  ProductModel({
+  const ProductModel({
     required super.id,
     required super.title,
     required super.description,
@@ -9,19 +9,7 @@ class ProductModel extends ProductEntity {
     required super.price,
     required super.discountPercentage,
     required super.rating,
-    required super.stock,
-    required super.tags,
     required super.brand,
-    required super.sku,
-    required super.weight,
-    required super.dimensions,
-    required super.warrantyInformation,
-    required super.shippingInformation,
-    required super.availabilityStatus,
-    required super.reviews,
-    required super.returnPolicy,
-    required super.minimumOrderQuantity,
-    required super.meta,
     required super.images,
     required super.thumbnail,
   });
@@ -35,21 +23,8 @@ class ProductModel extends ProductEntity {
       price: json['price'],
       discountPercentage: json['discountPercentage'],
       rating: json['rating'],
-      stock: json['stock'],
-      tags: List.castFrom<dynamic, String>(json['tags']),
       brand: json['brand'],
-      sku: json['sku'],
-      weight: json['weight'],
-      dimensions: Dimensions.fromJson(json['dimensions']),
-      warrantyInformation: json['warrantyInformation'],
-      shippingInformation: json['shippingInformation'],
-      availabilityStatus: json['availabilityStatus'],
-      reviews:
-          List.from(json['reviews']).map((e) => Reviews.fromJson(e)).toList(),
-      returnPolicy: json['returnPolicy'],
-      minimumOrderQuantity: json['minimumOrderQuantity'],
-      meta: Meta.fromJson(json['meta']),
-      images: List.castFrom<dynamic, String>(json['images']),
+      images: (json['images'] as List),
       thumbnail: json['thumbnail'],
     );
   }
