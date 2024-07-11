@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/config/theme/app_theme.dart';
 import 'core/di/di.dart';
 import 'products/presentation/manager/products_cubit.dart';
 import 'products/presentation/ui/products_screen.dart';
@@ -28,15 +29,9 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Route Task',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color(0xFF004182),
-              primary: const Color(0xFF004182),
-              surface: Colors.white,
-            ),
-            useMaterial3: true,
-          ),
+          theme: AppTheme.appTheme,
           home: BlocProvider<ProductsCubit>(
             create: (context) => getIt<ProductsCubit>(),
             child: const ProductsScreen(),
