@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -11,7 +12,7 @@ part 'products_state.dart';
 class ProductsCubit extends Cubit<ProductsState> {
   final GetProductsUseCase _getProductsUseCase;
 
-  List<ProductEntity> _products = [];
+  List<ProductEntity> products = [];
 
   @factoryMethod
   ProductsCubit(this._getProductsUseCase) : super(ProductsInitialState());
@@ -22,7 +23,7 @@ class ProductsCubit extends Cubit<ProductsState> {
     final result = await _getProductsUseCase.execute();
 
     result.fold((error) => emit(ProductsErrorState(error)), (products) {
-      _products = products;
+      this.products = products;
 
       emit(ProductsLoadedState(products));
     });
@@ -31,7 +32,7 @@ class ProductsCubit extends Cubit<ProductsState> {
   void search(String query) async {
     emit(ProductsLoadingState());
 
-    List<ProductEntity> searchResults = _products
+    List<ProductEntity> searchResults = products
         .where((product) =>
             product.title?.toLowerCase().contains(query.toLowerCase()) ?? false)
         .toList();
@@ -42,6 +43,6 @@ class ProductsCubit extends Cubit<ProductsState> {
   void clearSearch() {
     emit(ProductsLoadingState());
 
-    emit(ProductsLoadedState(_products));
+    emit(ProductsLoadedState(products));
   }
 }

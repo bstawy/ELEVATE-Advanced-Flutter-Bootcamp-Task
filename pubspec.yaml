@@ -27,11 +27,13 @@ dependencies:
   shimmer: ^3.0.0
 
 dev_dependencies:
+  bloc_test: ^9.1.7
   build_runner: ^2.4.11
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
   injectable_generator: ^2.6.1
+  mockito: ^5.4.4
 
 flutter:
   uses-material-design: true
@@ -45,4 +47,3 @@ flutter:
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
         - asset: assets/fonts/Poppins-Light.ttf
-
