@@ -1,4 +1,3 @@
-# Route Tech Summit Task
 ![Frame](https://github.com/user-attachments/assets/baaa2d13-731f-4ade-9e78-ebf3143634a7)
 
 &nbsp;
@@ -25,6 +24,7 @@
 - Repository pattern
 - Clean architecture
 - MVVM architecture with Cubit
+- Unit testing
 
 &nbsp;
 
@@ -42,31 +42,38 @@ https://github.com/user-attachments/assets/b1916550-f688-4ff1-9e85-58e62c214942
 
 ## 📁 Project Structure
 ```arduino
-lib
-├── core
-│   ├── config
-│   │   └── theme
-│   │       ├── app_theme.dart
-│   │       └── text_styles.dart
-│   ├── di
-│   │   ├── di.config.dart
-│   │   └── di.dart
-│   ├── networking
-│   │   ├── api_constants.dart
-│   │   └── dio_factory.dart
-├── products
-│   ├── data
-│   │   ├── data_source
-│   │   ├── models
-│   │   └── repository_impl
-│   ├── domain
-│   │   ├── entities
-│   │   ├── repository
-│   │   └── use_cases
-│   └── presentation
-│       ├── manager
-│       └── ui
-└── main.dart
+root
+├──lib
+│   ├── core
+│   │   ├── config
+│   │   │   └── theme
+│   │   │       ├── app_theme.dart
+│   │   │       └── text_styles.dart
+│   │   ├── di
+│   │   │   ├── di.config.dart
+│   │   │   └── di.dart
+│   │   ├── networking
+│   │   │   ├── api_constants.dart
+│   │   │   └── dio_factory.dart
+│   ├── products
+│   │   ├── data
+│   │   │   ├── data_source
+│   │   │   ├── models
+│   │   │   └── repository_impl
+│   │   ├── domain
+│   │   │   ├── entities
+│   │   │   ├── repository
+│   │   │   └── use_cases
+│   │   └── presentation
+│   │       ├── manager
+│   │       └── ui
+│   └── main.dart
+│
+└── test
+    └── presentation
+        └── manager
+            ├── products_cubit_test.dart
+            └── products_cubit_test.mocks.dart     
 ```
 
 &nbsp;
@@ -88,4 +95,6 @@ dependencies:
   injectable: ^2.4.2
   pretty_dio_logger: ^1.3.1
   shimmer: ^3.0.0
+  bloc_test: ^9.1.7
+  mockito: ^5.4.4
 ```

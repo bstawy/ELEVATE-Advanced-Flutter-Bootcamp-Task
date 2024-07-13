@@ -4,74 +4,30 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'package:dartz/dartz.dart';
-import 'package:get_it/get_it.dart';
 
-import 'package:route_tech_summit_flutter_task/core/di/di.dart';
 import 'package:route_tech_summit_flutter_task/products/domain/entities/product_entity.dart';
 import 'package:route_tech_summit_flutter_task/products/domain/use_cases/get_products_use_case.dart';
 import 'package:route_tech_summit_flutter_task/products/presentation/manager/products_cubit.dart';
+
+import '../../testing_data.dart';
 
 @GenerateMocks([GetProductsUseCase])
 import 'products_cubit_test.mocks.dart';
 
 void main() {
-  final getIt = GetIt.instance;
-
   late List<ProductEntity> products;
 
   setUpAll(
     () {
-      configureDependencies();
-
-      products = <ProductEntity>[
-        const ProductEntity(
-          id: 1,
-          title: 'Cupcake',
-          description: 'Description 1',
-          category: 'Category 1',
-          price: 100,
-          discountPercentage: 10,
-          rating: 4.5,
-          brand: 'Brand 1',
-          images: ['image1.png'],
-          thumbnail: 'thumbnail1.png',
-        ),
-        const ProductEntity(
-          id: 2,
-          title: 'Car',
-          description: 'Description 2',
-          category: 'Category 2',
-          price: 200,
-          discountPercentage: 20,
-          rating: 4.0,
-          brand: 'Brand 2',
-          images: ['image2.png'],
-          thumbnail: 'thumbnail2.png',
-        ),
-        const ProductEntity(
-          id: 3,
-          title: 'Phone',
-          description: 'Description 3',
-          category: 'Category 3',
-          price: 300,
-          discountPercentage: 30,
-          rating: 4.0,
-          brand: 'Brand 3',
-          images: ['image3.png'],
-          thumbnail: 'thumbnail3.png',
-        ),
-      ];
+      products = TestingData.products;
     },
   );
 
-  group('ProductsCubit Tests', () {
+  group('GetProducts Tests', () {
     late MockGetProductsUseCase mockGetProductsUseCase;
 
     setUp(() {
       mockGetProductsUseCase = MockGetProductsUseCase();
-      if (!getIt.isRegistered<GetProductsUseCase>()) {
-        getIt.registerSingleton<GetProductsUseCase>(mockGetProductsUseCase);
-      }
     });
 
     blocTest<ProductsCubit, ProductsState>(
@@ -120,7 +76,14 @@ emit (Products error state)''',
         verify(mockGetProductsUseCase.execute()).called(1);
       },
     );
+  });
 
+  group('Products searched by keyword tests', () {
+    late MockGetProductsUseCase mockGetProductsUseCase;
+
+    setUp(() {
+      mockGetProductsUseCase = MockGetProductsUseCase();
+    });
     blocTest<ProductsCubit, ProductsState>(
       '''Cubit search function test success
 emit (Products loading state)
