@@ -23,7 +23,7 @@ void main() {
     },
   );
 
-  group('ProductsCubit Tests', () {
+  group('GetProducts Tests', () {
     late MockGetProductsUseCase mockGetProductsUseCase;
 
     setUp(() {
@@ -76,7 +76,14 @@ emit (Products error state)''',
         verify(mockGetProductsUseCase.execute()).called(1);
       },
     );
+  });
 
+  group('Products searched by keyword tests', () {
+    late MockGetProductsUseCase mockGetProductsUseCase;
+
+    setUp(() {
+      mockGetProductsUseCase = MockGetProductsUseCase();
+    });
     blocTest<ProductsCubit, ProductsState>(
       '''Cubit search function test success
 emit (Products loading state)
