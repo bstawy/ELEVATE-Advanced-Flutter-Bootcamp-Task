@@ -70,10 +70,15 @@ root
 │   └── main.dart
 │
 └── test
-    └── presentation
-        └── manager
-            ├── products_cubit_test.dart
-            └── products_cubit_test.mocks.dart     
+    ├── domain
+    │   └── use_cases
+    |       ├── get_products_use_case_test.dart
+    |       └── get_products_use_case_test.mocks.dart
+    ├── presentation
+    |   └── manager
+    |       ├── products_cubit_test.dart
+    |       └── products_cubit_test.mocks.dart  
+    └── testing_data.dart
 ```
 
 &nbsp;
