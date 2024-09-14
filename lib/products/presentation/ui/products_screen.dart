@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 import '../../../core/config/theme/text_styles.dart';
@@ -18,33 +17,27 @@ class ProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        leadingWidth: 100.w,
-        leading: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.r),
-          child: SvgPicture.asset('assets/images/route_logo.svg'),
-        ),
-        forceMaterialTransparency: true,
-      ),
-      body: BlocBuilder<ProductsCubit, ProductsState>(
-        bloc: context.read<ProductsCubit>()..getProducts(),
-        builder: (context, state) {
-          return RefreshIndicator(
-            onRefresh: () async {
-              context.read<ProductsCubit>().getProducts();
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: Column(
-                children: [
-                  const HeaderWidget(),
-                  Gap(8.h),
-                  _buildBodyWidget(state),
-                ],
+      body: SafeArea(
+        child: BlocBuilder<ProductsCubit, ProductsState>(
+          bloc: context.read<ProductsCubit>()..getProducts(),
+          builder: (context, state) {
+            return RefreshIndicator(
+              onRefresh: () async {
+                context.read<ProductsCubit>().getProducts();
+              },
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Column(
+                  children: [
+                    const HeaderWidget(),
+                    Gap(8.h),
+                    _buildBodyWidget(state),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
