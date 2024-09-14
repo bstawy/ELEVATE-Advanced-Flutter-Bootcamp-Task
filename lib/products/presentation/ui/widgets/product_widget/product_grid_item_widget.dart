@@ -16,11 +16,6 @@ class ProductsGridItemWidget extends StatelessWidget {
     required this.product,
   });
 
-  double calculateOriginalPrice(
-      num priceAfterDiscount, num discountPercentage) {
-    return priceAfterDiscount / (1 - discountPercentage / 100);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,7 +32,7 @@ class ProductsGridItemWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ProductImageWidget(imageUrl: product.images?.first ?? ""),
+              ProductImageWidget(imageUrl: product.image ?? ""),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
@@ -67,7 +62,7 @@ class ProductsGridItemWidget extends StatelessWidget {
                         Gap(15.w),
                         Expanded(
                           child: Text(
-                            "EGP ${(calculateOriginalPrice(product.price ?? 0, product.discountPercentage ?? 0)).toStringAsFixed(2)}",
+                            "EGP ${product.price ?? 0 + 100}",
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyles.font11BlueRegular.copyWith(
@@ -80,7 +75,7 @@ class ProductsGridItemWidget extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "Review (${(product.rating ?? 0).toStringAsFixed(1)})",
+                          "${product.rating?.rate} (${product.rating?.count})",
                           style: TextStyles.font12DarkBlueRegular,
                         ),
                         Gap(4.w),
@@ -100,7 +95,8 @@ class ProductsGridItemWidget extends StatelessWidget {
                             );
                           },
                           child: SvgPicture.asset(
-                              'assets/icons/add_button_icon.svg'),
+                            'assets/icons/add_button_icon.svg',
+                          ),
                         ),
                       ],
                     )
