@@ -1,4 +1,4 @@
-![Frame](https://github.com/user-attachments/assets/baaa2d13-731f-4ade-9e78-ebf3143634a7)
+![Frame](https://github.com/user-attachments/assets/e459dfed-9733-4be4-bbea-7f5e4a56e101)
 
 &nbsp;
 
@@ -31,12 +31,9 @@
 ## 📱 Screen
 - **Product Screen:** Show Products.
 
-| Screenshot | Screen Record |
-| --------------- | ----------------|
-| <img src="https://github.com/bstawy/Route-Tech-Summit-Flutter-Task/assets/99258115/83bfcb0d-1009-4556-8caa-9edf4e2e7ffa" width="300" /> | <img src="https://github.com/user-attachments/assets/c78a41ea-3df9-4b59-b834-ac80cba31ab4" width="300" />|
-
-**Screen record video preview**
-https://github.com/user-attachments/assets/b1916550-f688-4ff1-9e85-58e62c214942
+| Screenshot |
+| --------------- |
+| <img src="https://github.com/user-attachments/assets/387fe57b-da47-4cf7-b09b-2a768bf52fa1" width="300" /> | 
 
 &nbsp;
 
