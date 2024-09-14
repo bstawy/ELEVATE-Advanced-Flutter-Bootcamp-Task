@@ -7,11 +7,8 @@ class ProductModel extends ProductEntity {
     required super.description,
     required super.category,
     required super.price,
-    required super.discountPercentage,
     required super.rating,
-    required super.brand,
-    required super.images,
-    required super.thumbnail,
+    required super.image,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
@@ -21,11 +18,22 @@ class ProductModel extends ProductEntity {
       description: json['description'],
       category: json['category'],
       price: json['price'],
-      discountPercentage: json['discountPercentage'],
-      rating: json['rating'],
-      brand: json['brand'],
-      images: (json['images'] as List),
-      thumbnail: json['thumbnail'],
+      rating: RatingModel.fromJson(json['rating']),
+      image: json['image'],
+    );
+  }
+}
+
+class RatingModel extends RatingEntity {
+  const RatingModel({
+    required super.rate,
+    required super.count,
+  });
+
+  factory RatingModel.fromJson(Map<String, dynamic> json) {
+    return RatingModel(
+      rate: json['rate'],
+      count: json['count'],
     );
   }
 }

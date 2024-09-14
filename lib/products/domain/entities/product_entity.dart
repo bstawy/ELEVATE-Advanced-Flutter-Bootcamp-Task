@@ -6,11 +6,8 @@ class ProductEntity extends Equatable {
   final String? description;
   final String? category;
   final num? price;
-  final num? discountPercentage;
-  final num? rating;
-  final String? brand;
-  final List<dynamic>? images;
-  final String? thumbnail;
+  final RatingEntity? rating;
+  final String? image;
   final bool isFavorite;
 
   const ProductEntity({
@@ -19,28 +16,10 @@ class ProductEntity extends Equatable {
     this.description,
     this.category,
     this.price,
-    this.discountPercentage,
     this.rating,
-    this.brand,
-    this.images,
-    this.thumbnail,
+    this.image,
     this.isFavorite = false,
   });
-
-  factory ProductEntity.fromJson(Map<String, dynamic> json) {
-    return ProductEntity(
-      id: json['id'],
-      title: json['title'],
-      description: json['description'],
-      category: json['category'],
-      price: json['price'],
-      discountPercentage: json['discountPercentage'],
-      rating: json['rating'],
-      brand: json['brand'],
-      images: (json['images'] as List),
-      thumbnail: json['thumbnail'],
-    );
-  }
 
   @override
   List<Object?> get props => [
@@ -49,11 +28,17 @@ class ProductEntity extends Equatable {
         description,
         category,
         price,
-        discountPercentage,
         rating,
-        brand,
-        images,
-        thumbnail,
         isFavorite,
       ];
+}
+
+class RatingEntity {
+  final num? rate;
+  final num? count;
+
+  const RatingEntity({
+    this.rate,
+    this.count,
+  });
 }
