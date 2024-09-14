@@ -6,7 +6,6 @@ import '../../domain/entities/product_entity.dart';
 import '../../domain/repository/products_repository.dart';
 import '../data_source/products_data_source.dart';
 import '../models/product_model.dart';
-import '../models/products_response_model.dart';
 
 @Injectable(as: ProductsRepository)
 class ProductsRepositoryImpl implements ProductsRepository {
