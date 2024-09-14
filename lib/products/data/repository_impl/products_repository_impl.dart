@@ -21,7 +21,7 @@ class ProductsRepositoryImpl implements ProductsRepository {
       final response = await _productsDataSource.getProducts();
 
       if (response.statusCode == 200) {
-        final List<Map<String, dynamic>> result = response.data;
+        final result = response.data as List;
         final List<ProductModel> products =
             result.map((product) => ProductModel.fromJson(product)).toList();
 
